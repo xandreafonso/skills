@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 32px; background: var(--color-bg); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .item { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 16px 0; }
+    .box { width: 120px; height: 80px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); }
+    .label { font-family: var(--font-mono); font-size: 10px; color: var(--color-fg-muted); text-align: center; }
+    .label b { color: var(--color-fg); font-weight: 500; display: block; letter-spacing: 0.04em; text-transform: uppercase; }
+  </style>
+  <div class="grid">
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-xs)"></div><div class="label"><b>xs</b>flat · hairline</div></div>
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-sm)"></div><div class="label"><b>sm</b>resting card</div></div>
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-md)"></div><div class="label"><b>md</b>elevated</div></div>
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-lg)"></div><div class="label"><b>lg</b>menu · popover</div></div>
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-xl)"></div><div class="label"><b>xl</b>modal</div></div>
+    <div class="item"><div class="box" style="box-shadow: var(--shadow-amber); border-color: rgba(245,158,11,0.35)"></div><div class="label"><b>amber</b>focus / featured</div></div>
+  </div>
+</body></html>

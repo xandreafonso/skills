@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .swatch { display: flex; flex-direction: column; gap: 6px; }
+    .chip { aspect-ratio: 1.6 / 1; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.06); }
+    .label { font-family: var(--font-mono); font-size: 10px; color: var(--color-fg-muted); display: flex; flex-direction: column; gap: 1px; }
+    .label b { color: var(--color-fg); font-weight: 500; }
+    .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+    .header h3 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+    .header span { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-subtle); letter-spacing: 0.04em; text-transform: uppercase; }
+    .usage { margin-top: 16px; padding: 12px 14px; background: var(--color-bg-sunken); border-radius: var(--radius-md); border: 1px solid var(--color-border); }
+    .usage p { margin: 0; font-size: 12px; line-height: 1.55; color: var(--color-fg-muted); }
+    .usage p b { color: var(--color-fg); font-weight: 500; }
+  </style>
+  <div class="header"><h3>Amber</h3><span>accent · CTAs · highlights · #f59e0b</span></div>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:var(--amber-300)"></div><div class="label"><b>300</b>fcd34d</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--amber-400)"></div><div class="label"><b>400</b>fbbf24</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--amber-500); box-shadow: 0 0 0 1px #fff inset"></div><div class="label"><b>500★</b>f59e0b</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--amber-600)"></div><div class="label"><b>600</b>d97706</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--amber-700)"></div><div class="label"><b>700</b>b45309</div></div>
+  </div>
+  <div class="usage">
+    <p><b>Regra de uso.</b> Acento. Nunca em corpo de texto. Reservado para CTA primário, métricas de impacto, links e indicadores ativos. Se aparecer em mais de 5% da tela, está sendo abusado.</p>
+  </div>
+</body></html>

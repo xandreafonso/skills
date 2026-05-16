@@ -1,0 +1,14 @@
+/* Preview-card shell — used by every file in /preview.
+   Cards render at 700px wide in the Design System tab.
+   We keep them clean, padded, no titles. */
+@import url("../colors_and_type.css");
+@import url("../components.css");
+
+html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); }
+body {
+  font-family: var(--font-sans);
+  padding: 24px;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+* { box-sizing: border-box; }

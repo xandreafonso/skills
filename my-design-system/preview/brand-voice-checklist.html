@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 28px; }
+    .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+    .header h3 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+    .header span { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-subtle); letter-spacing: 0.04em; text-transform: uppercase; }
+    .list { display: flex; flex-direction: column; gap: 8px; }
+    .item { display: flex; gap: 14px; padding: 14px 16px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); align-items: center; }
+    .check { width: 18px; height: 18px; border: 1.5px solid var(--color-border-strong); border-radius: var(--radius-sm); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--color-accent); }
+    .check svg { display: block; }
+    .text { font-size: 14px; line-height: 1.45; color: var(--color-fg); }
+    .text b { color: var(--color-accent); font-weight: 500; }
+  </style>
+  <div class="header"><h3>Checklist antes de publicar</h3><span>do tom de voz</span></div>
+  <div class="list">
+    <div class="item">
+      <div class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="text">Faria sentido ser dito numa <b>reunião com o cliente</b>?</div>
+    </div>
+    <div class="item">
+      <div class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="text">Expliquei o <b>raciocínio</b>, não só a conclusão?</div>
+    </div>
+    <div class="item">
+      <div class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="text">Está livre de <b>buzzwords e promessas vazias</b>?</div>
+    </div>
+    <div class="item">
+      <div class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="text">O <b>próximo passo</b> está claro?</div>
+    </div>
+  </div>
+</body></html>

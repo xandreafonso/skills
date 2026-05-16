@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 28px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field__label { font-size: 10px; }
+  </style>
+  <div class="row">
+    <div class="field">
+      <label class="field__label">Nome</label>
+      <input class="input" value="Alexandre Afonso" />
+    </div>
+    <div class="field">
+      <label class="field__label">Empresa</label>
+      <input class="input" placeholder="ex: Acme S.A." />
+    </div>
+    <div class="field" style="grid-column: span 2">
+      <label class="field__label">Desafio</label>
+      <textarea class="textarea" placeholder="Descreva em 1 ou 2 parágrafos o problema que quer resolver com IA."></textarea>
+    </div>
+    <div class="field">
+      <label class="field__label">Faturamento anual</label>
+      <select class="select"><option>Selecione…</option><option>R$ 5–20M</option><option>R$ 20–100M</option><option>R$ 100M+</option></select>
+    </div>
+    <div class="field">
+      <label class="field__label">Urgência</label>
+      <select class="select"><option>Selecione…</option><option>Próximos 30 dias</option><option>Trimestre</option><option>Sem prazo</option></select>
+    </div>
+  </div>
+</body></html>

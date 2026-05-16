@@ -1,1 +1,0 @@
-Original: https://github.com/sanjay3290/ai-skills/

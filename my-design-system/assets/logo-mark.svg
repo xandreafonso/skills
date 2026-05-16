@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="AA mark">
+  
+  <rect x="0" y="0" width="80" height="80" rx="6" fill="currentColor" opacity="0.0"></rect>
+  <text x="40" y="56" class="mark" font-size="56" text-anchor="middle" fill="currentColor">aa</text>
+</svg>

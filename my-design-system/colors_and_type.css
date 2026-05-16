@@ -1,0 +1,299 @@
+/* =============================================================
+   Alexandre Afonso — ConsultorIA
+   Design tokens: colors, typography, spacing, radii, elevation
+   Dark-first. Navy + amber. Sóbrio, corporativo, premium.
+   ============================================================= */
+
+/* ---- Fonts (Google Fonts) ----
+   Sans: Geist (geometric, modern, neutra-premium)
+   Mono: Geist Mono (terminal, código, metadados)
+   Tabular numerals are critical for tables/dashboards.        */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ====== BRAND COLORS ============================== */
+  /* Navy — primary brand color. #1a2a4a is the anchor.
+     Variants are tuned by hand, not algorithmic shifts.   */
+  --navy-50:  #e8edf5;
+  --navy-100: #c5d0e3;
+  --navy-200: #8fa1c0;
+  --navy-300: #5a729e;
+  --navy-400: #34507f;
+  --navy-500: #1a2a4a;   /* anchor */
+  --navy-600: #15233e;
+  --navy-700: #101b30;
+  --navy-800: #0b1322;
+  --navy-900: #060b16;
+  --navy-950: #03070f;
+
+  /* Amber — accent. CTAs, highlights, data emphasis.
+     Used sparingly. Never on body text.                   */
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;   /* anchor */
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+
+  /* Neutrals (cool-leaning to harmonize with navy) */
+  --neutral-0:    #ffffff;
+  --neutral-50:   #f5f7fa;
+  --neutral-100:  #e6ebf2;
+  --neutral-200:  #c8d1de;
+  --neutral-300:  #9aa6b8;
+  --neutral-400:  #6c7a90;
+  --neutral-500:  #4a566a;
+  --neutral-600:  #313b4d;
+  --neutral-700:  #1f2737;
+  --neutral-800:  #131a27;
+  --neutral-900:  #0a0f1a;
+
+  /* Semantic ============================================ */
+  --color-bg:           var(--navy-900);          /* canvas */
+  --color-bg-elevated:  var(--navy-800);          /* cards/surface */
+  --color-bg-sunken:    var(--navy-950);          /* code blocks, wells */
+  --color-bg-overlay:   rgba(6, 11, 22, 0.72);    /* modal scrim */
+
+  --color-surface:        #0e172a;                /* default card */
+  --color-surface-hover:  #142039;
+  --color-surface-active: #1a2a4a;
+
+  --color-border:         rgba(255, 255, 255, 0.07);
+  --color-border-strong:  rgba(255, 255, 255, 0.14);
+  --color-border-focus:   var(--amber-500);
+
+  --color-fg:           #eef2f9;     /* primary text */
+  --color-fg-muted:     #a9b4c8;     /* secondary text */
+  --color-fg-subtle:    #6b7894;     /* tertiary, captions */
+  --color-fg-disabled:  #404a5c;
+  --color-fg-on-amber:  #1a1102;     /* text on amber pills/buttons */
+
+  --color-accent:        var(--amber-500);
+  --color-accent-hover:  var(--amber-400);
+  --color-accent-press:  var(--amber-600);
+  --color-accent-soft:   rgba(245, 158, 11, 0.12);
+
+  --color-link:          var(--amber-400);
+  --color-link-hover:    var(--amber-300);
+
+  /* Status — desaturated to fit corporate tone */
+  --color-success: #2da472;
+  --color-warning: #d4a015;
+  --color-danger:  #c4474a;
+  --color-info:    #4d7cc2;
+
+  /* ====== TYPOGRAPHY =================================== */
+  --font-sans: "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, Consolas,
+               "Liberation Mono", monospace;
+
+  /* Type scale — modular, 1.250 (major third) but slightly compressed
+     at top for screens. Display sizes use larger jumps for slides.    */
+  --fs-xs:    12px;
+  --fs-sm:    13px;
+  --fs-base:  15px;
+  --fs-md:    17px;
+  --fs-lg:    20px;
+  --fs-xl:    24px;
+  --fs-2xl:   30px;
+  --fs-3xl:   38px;
+  --fs-4xl:   48px;
+  --fs-5xl:   62px;
+  --fs-6xl:   80px;
+  --fs-display: 112px;
+
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.6;
+  --lh-loose:   1.75;
+
+  --tracking-tightest: -0.04em;
+  --tracking-tighter:  -0.025em;
+  --tracking-tight:    -0.012em;
+  --tracking-normal:   0;
+  --tracking-wide:     0.04em;
+  --tracking-wider:    0.08em;
+  --tracking-widest:   0.18em;     /* eyebrow / kicker */
+
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  /* ====== SPACING (4px base) =========================== */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ====== RADII ======================================== */
+  /* Restrained. Premium consulting reads as small radii,
+     not big rounded blobs. Pills only for tags/badges.   */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  14px;
+  --radius-2xl: 20px;
+  --radius-pill: 999px;
+
+  /* ====== ELEVATION ==================================== */
+  /* On dark, we lean on borders + subtle inner highlights
+     more than drop shadows. Shadows are deep+soft, never glow. */
+  --shadow-xs: 0 1px 0 rgba(255,255,255,0.04) inset,
+               0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm: 0 1px 0 rgba(255,255,255,0.04) inset,
+               0 2px 6px rgba(0,0,0,0.35);
+  --shadow-md: 0 1px 0 rgba(255,255,255,0.05) inset,
+               0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg: 0 1px 0 rgba(255,255,255,0.06) inset,
+               0 20px 50px rgba(0,0,0,0.55);
+  --shadow-xl: 0 1px 0 rgba(255,255,255,0.06) inset,
+               0 32px 80px rgba(0,0,0,0.6);
+  --shadow-amber: 0 0 0 1px rgba(245,158,11,0.35),
+                  0 12px 32px rgba(245,158,11,0.18);
+
+  /* ====== MOTION ======================================= */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in:     cubic-bezier(0.55, 0, 0.8, 0.2);
+
+  --dur-instant: 80ms;
+  --dur-fast:    160ms;
+  --dur-normal:  240ms;
+  --dur-slow:    420ms;
+  --dur-page:    600ms;
+
+  /* ====== LAYOUT ======================================= */
+  --container-narrow: 720px;
+  --container:        1080px;
+  --container-wide:   1280px;
+  --container-full:   1440px;
+}
+
+/* =============================================================
+   Element defaults (semantic styles, scoped under .ds-prose
+   or as base resets you can opt into).
+   ============================================================= */
+
+html {
+  color-scheme: dark;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  font-feature-settings: "ss01", "cv11", "calt";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+::selection { background: var(--amber-500); color: var(--color-fg-on-amber); }
+
+/* Semantic typography classes. Use these instead of raw tags
+   when you need consistent treatment across the system.       */
+
+.h-display {
+  font-family: var(--font-sans);
+  font-size: clamp(56px, 8vw, var(--fs-display));
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tightest);
+  line-height: 0.95;
+  color: var(--color-fg);
+}
+
+.h1 {
+  font-size: clamp(36px, 5vw, var(--fs-4xl));
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tighter);
+  line-height: var(--lh-tight);
+  color: var(--color-fg);
+}
+
+.h2 {
+  font-size: var(--fs-3xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  color: var(--color-fg);
+}
+
+.h3 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  color: var(--color-fg);
+}
+
+.h4 {
+  font-size: var(--fs-xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--lh-snug);
+  color: var(--color-fg);
+}
+
+.h5 {
+  font-size: var(--fs-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--lh-snug);
+  color: var(--color-fg);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.lede {
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--color-fg-muted);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-tight);
+}
+
+.body { font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--color-fg); }
+.body-muted { font-size: var(--fs-base); line-height: var(--lh-relaxed); color: var(--color-fg-muted); }
+.small { font-size: var(--fs-sm); line-height: var(--lh-normal); color: var(--color-fg-muted); }
+.caption { font-size: var(--fs-xs); line-height: var(--lh-normal); color: var(--color-fg-subtle); letter-spacing: var(--tracking-wide); }
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  letter-spacing: 0;
+}
+
+a { color: var(--color-link); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
+a:hover { color: var(--color-link-hover); }
+
+/* Tabular numerals (use on dashboards, tables, KPIs) */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Hairline — premium consulting motif */
+.hairline { border-top: 1px solid var(--color-border); }
+.hairline-strong { border-top: 1px solid var(--color-border-strong); }

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proposta · Alexandre Afonso × Acme</title>
+  <link rel="stylesheet" href="../colors_and_type.css" />
+  <link rel="stylesheet" href="../components.css" />
+  <script src="deck-stage.js"></script>
+  <style>
+    :root {
+      --slide-pad-x: 96px;
+      --slide-pad-y: 80px;
+    }
+    html, body { background: #000; margin: 0; }
+    deck-stage { background: #000; }
+
+    /* Slide base */
+    .slide {
+      width: 100%; height: 100%;
+      background: var(--navy-900);
+      color: var(--color-fg);
+      padding: var(--slide-pad-y) var(--slide-pad-x);
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+      font-family: var(--font-sans);
+    }
+    .slide--dark { background: var(--navy-950); }
+    .slide--surface { background: var(--navy-800); }
+    .slide--center { justify-content: center; }
+
+    /* Grid backdrop */
+    .slide-grid::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 60% at 30% 50%, black 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 30% 50%, black 30%, transparent 75%);
+    }
+
+    /* Slide chrome (footer line) */
+    .slide-chrome {
+      position: absolute; left: var(--slide-pad-x); right: var(--slide-pad-x); bottom: 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--color-fg-subtle);
+    }
+    .slide-chrome-brand { color: var(--color-fg-muted); display: flex; gap: 14px; }
+    .slide-chrome-brand b { color: var(--color-fg); font-weight: 600; letter-spacing: -0.02em; text-transform: none; font-family: var(--font-sans); font-size: 17px; }
+    .slide-chrome-brand .ia { color: var(--color-accent); }
+
+    /* Eyebrow */
+    .eyebrow-slide {
+      font-family: var(--font-mono); font-size: 16px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--color-accent);
+      display: flex; align-items: center; gap: 18px;
+      margin-bottom: 56px;
+    }
+    .eyebrow-slide .bar { width: 48px; height: 1px; background: var(--color-accent); }
+
+    /* Typography */
+    .display {
+      font-size: 132px; font-weight: 500; letter-spacing: -0.04em;
+      line-height: 0.95; color: var(--color-fg); margin: 0;
+      text-wrap: balance;
+    }
+    .display em { font-style: normal; color: var(--color-accent); }
+    .h1-slide {
+      font-size: 92px; font-weight: 600; letter-spacing: -0.03em;
+      line-height: 1.02; margin: 0; text-wrap: balance;
+    }
+    .h2-slide {
+      font-size: 64px; font-weight: 600; letter-spacing: -0.025em;
+      line-height: 1.06; margin: 0;
+    }
+    .lede-slide {
+      font-size: 32px; line-height: 1.4; letter-spacing: -0.012em;
+      color: var(--color-fg-muted); max-width: 1280px; margin: 32px 0 0;
+      text-wrap: pretty;
+    }
+    .kicker {
+      font-family: var(--font-mono); font-size: 18px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--color-fg-subtle);
+    }
+    .num-display {
+      font-variant-numeric: tabular-nums; font-weight: 500;
+      letter-spacing: -0.04em; color: var(--color-accent);
+      line-height: 1;
+    }
+  </style>
+</head>
+<body>
+  <deck-stage>
+
+    <!-- ============ 01 · Title ============ -->
+    <section data-screen-label="01 Title" class="slide slide-grid slide--center" style="padding-left: 120px;">
+      <div class="kicker" style="margin-bottom: 56px;">— Proposta comercial · v1.0 · confidencial</div>
+      <h1 class="display" style="max-width: 1480px;">
+        Automação do atendimento de pós-venda <em>com IA</em> para a Acme Tech.
+      </h1>
+      <div style="display: flex; gap: 96px; margin-top: 80px;">
+        <div>
+          <div class="kicker">Para</div>
+          <div style="font-size: 28px; font-weight: 600; margin-top: 12px; letter-spacing: -0.02em;">Acme Tech</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 4px;">A/C Direção · Operações</div>
+        </div>
+        <div>
+          <div class="kicker">Por</div>
+          <div style="font-size: 28px; font-weight: 600; margin-top: 12px; letter-spacing: -0.02em;">Alexandre Afonso</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 4px;">ConsultorIA · CNPJ sob consulta</div>
+        </div>
+        <div>
+          <div class="kicker">Validade</div>
+          <div style="font-size: 28px; font-weight: 600; margin-top: 12px; letter-spacing: -0.02em;">30 dias</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 4px;">15 mai 2026 → 14 jun 2026</div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>01 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 02 · Section divider ============ -->
+    <section data-screen-label="02 Section" class="slide slide--dark slide--center">
+      <div style="max-width: 1300px;">
+        <div class="kicker" style="color: var(--color-accent); margin-bottom: 48px;">— Parte 01 / 03</div>
+        <h1 class="h1-slide">O contexto, do jeito que ele aparece na operação.</h1>
+        <p class="lede-slide">Antes de propor solução, registro como o processo de atendimento da Acme Tech funciona hoje — com base nas reuniões e materiais coletados.</p>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>02 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 03 · Big quote / framing ============ -->
+    <section data-screen-label="03 Quote" class="slide slide--center" style="background: var(--navy-900);">
+      <div style="position: absolute; inset: 0; background: radial-gradient(circle at 70% 40%, rgba(245,158,11,0.12), transparent 50%);"></div>
+      <div style="position: relative; max-width: 1500px;">
+        <div style="font-size: 220px; color: var(--color-accent); line-height: 0.5; margin-bottom: 24px; opacity: 0.5; font-family: var(--font-sans); font-weight: 500;">“</div>
+        <p style="font-size: 68px; font-weight: 500; letter-spacing: -0.022em; line-height: 1.18; margin: 0; color: var(--color-fg); text-wrap: balance;">
+          O que separa uma solução de IA que <em style="color: var(--color-accent); font-style: normal;">funciona</em> de uma demo é o contexto: o processo que ninguém documentou, os dados que vivem em planilhas, as decisões que dependem de duas pessoas.
+        </p>
+        <div style="margin-top: 56px; font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle);">— Alexandre Afonso · ConsultorIA</div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>03 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 04 · Stats / impact ============ -->
+    <section data-screen-label="04 Stats" class="slide">
+      <div class="eyebrow-slide"><span class="bar"></span>Estado atual · diagnóstico Q1 2026</div>
+      <h2 class="h2-slide" style="max-width: 1200px; margin-bottom: 96px;">A operação de atendimento da Acme Tech, hoje, em três números.</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--color-border);">
+        <div style="padding: 56px 56px 0 0; border-right: 1px solid var(--color-border);">
+          <div class="num-display" style="font-size: 184px;">12<span style="font-size: 72px; color: var(--color-fg-muted);"> h</span></div>
+          <div style="font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle); margin-top: 16px;">SLA atual de primeira resposta</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 16px; max-width: 360px; line-height: 1.5;">Meta interna é 2h. Não foi batida em nenhum mês de 2025.</div>
+        </div>
+        <div style="padding: 56px; border-right: 1px solid var(--color-border);">
+          <div class="num-display" style="font-size: 184px;">70<span style="font-size: 72px; color: var(--color-fg-muted);"> %</span></div>
+          <div style="font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle); margin-top: 16px;">Tickets repetitivos</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 16px; max-width: 360px; line-height: 1.5;">Mesmas 12 perguntas representam 70% do volume mensal.</div>
+        </div>
+        <div style="padding: 56px 0 0 56px;">
+          <div class="num-display" style="font-size: 184px;">R$ 720<span style="font-size: 72px; color: var(--color-fg-muted);"> k</span></div>
+          <div style="font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle); margin-top: 16px;">Custo anual atual</div>
+          <div style="font-size: 18px; color: var(--color-fg-muted); margin-top: 16px; max-width: 360px; line-height: 1.5;">8 atendentes hoje, plano de mais 3 contratações no ano.</div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>04 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 05 · Method (3 columns) ============ -->
+    <section data-screen-label="05 Method" class="slide">
+      <div class="eyebrow-slide"><span class="bar"></span>Como vamos trabalhar</div>
+      <h2 class="h2-slide" style="margin-bottom: 24px;">Três fases, cada uma com entrega clara no fim.</h2>
+      <p style="font-size: 22px; color: var(--color-fg-muted); max-width: 920px; margin: 0 0 80px; line-height: 1.5;">
+        Você sabe o que vai receber em cada fase, qual o prazo e qual o investimento. Adapto a profundidade ao seu contexto.
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+        <div style="padding: 36px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface);">
+          <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 32px;">— 01 · Entender</div>
+          <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.18; margin-bottom: 24px;">Reuniões, coleta de materiais e documentação.</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Reuniões com operação</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Coleta de materiais e sistemas</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Análise dos pontos de fricção</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Documento do processo atual</li>
+          </ul>
+          <div style="margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--color-border-strong); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle);">
+            <span>Duração</span><span style="color: var(--color-fg);">2 semanas</span>
+          </div>
+        </div>
+        <div style="padding: 36px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface);">
+          <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 32px;">— 02 · Planejar</div>
+          <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.18; margin-bottom: 24px;">Diagnóstico, plano de ação e arquitetura.</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Diagnóstico dos problemas</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Plano de ação priorizado</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Arquitetura da solução</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Escolha justificada de stack</li>
+          </ul>
+          <div style="margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--color-border-strong); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle);">
+            <span>Duração</span><span style="color: var(--color-fg);">5 semanas</span>
+          </div>
+        </div>
+        <div style="padding: 36px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface);">
+          <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 32px;">— 03 · Implementar</div>
+          <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.018em; line-height: 1.18; margin-bottom: 24px;">Implementação, integração e entrega.</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Implementação em ciclos curtos</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Integração com sistemas</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Validação contra casos reais</li>
+            <li style="font-family: var(--font-mono); font-size: 15px; color: var(--color-fg-muted); display: flex; gap: 12px;"><span style="color: var(--color-fg-subtle);">—</span> Hand-off + treinamento</li>
+          </ul>
+          <div style="margin-top: 32px; padding-top: 24px; border-top: 1px dashed var(--color-border-strong); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle);">
+            <span>Duração</span><span style="color: var(--color-fg);">5 semanas</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>05 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 06 · Timeline ============ -->
+    <section data-screen-label="06 Timeline" class="slide">
+      <div class="eyebrow-slide"><span class="bar"></span>Cronograma · 8 semanas</div>
+      <h2 class="h2-slide" style="margin-bottom: 96px;">Semana a semana, com hand-off no fim de cada bloco.</h2>
+      <div style="position: relative; padding-top: 48px;">
+        <div style="position: absolute; left: 0; right: 0; top: 80px; height: 1px; background: var(--color-border);"></div>
+        <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 0;">
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-accent); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S1</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg);">Diagnóstico</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S2</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Arquitetura</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S3</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Integração</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S4</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Eval real</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S5</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Pilot fechado</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S6</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Soft launch</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 10px; height: 10px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S7</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg-muted);">Operação</div></div>
+          <div style="position: relative; padding: 0 12px;"><div style="position: absolute; left: 50%; top: 32px; width: 12px; height: 12px; border-radius: 50%; background: var(--color-accent); transform: translateX(-50%);"></div><div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; text-align: center; margin-top: 56px;">S8</div><div style="font-size: 16px; text-align: center; margin-top: 8px; color: var(--color-fg);">Hand-off</div></div>
+        </div>
+        <div style="margin-top: 72px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <div style="padding: 28px; border-left: 2px solid var(--color-accent); background: rgba(245,158,11,0.06);"><div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 12px;">Marco · S1</div><div style="font-size: 20px; line-height: 1.4;">Documento de diagnóstico + decisão de go/no-go.</div></div>
+          <div style="padding: 28px; border-left: 2px solid var(--color-accent); background: rgba(245,158,11,0.06);"><div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 12px;">Marco · S5</div><div style="font-size: 20px; line-height: 1.4;">Agente validado em 200 casos do histórico real.</div></div>
+          <div style="padding: 28px; border-left: 2px solid var(--color-accent); background: rgba(245,158,11,0.06);"><div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.18em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 12px;">Marco · S8</div><div style="font-size: 20px; line-height: 1.4;">Agente em produção. Time autônomo. Consultor sai.</div></div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>06 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 07 · Case study ============ -->
+    <section data-screen-label="07 Case" class="slide slide--surface">
+      <div class="eyebrow-slide"><span class="bar"></span>Caso comparável · 2025</div>
+      <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 96px; align-items: start;">
+        <div>
+          <h2 class="h2-slide" style="margin-bottom: 32px; max-width: 920px;">Software B2B, 80 colaboradores. Contexto próximo ao da Acme Tech.</h2>
+          <p style="font-size: 22px; line-height: 1.55; color: var(--color-fg-muted); margin: 0 0 32px;">
+            A operação tinha 8 atendentes e plano de mais 3 contratações no ano. Implementei um agente que cobre as 12 perguntas que respondiam <strong style="color: var(--color-fg);">70%</strong> dos tickets. Tempo médio de resposta passou de 12h para <strong style="color: var(--color-fg);">poucos minutos</strong>.
+          </p>
+          <p style="font-size: 18px; line-height: 1.6; color: var(--color-fg-muted); margin: 0;">
+            As contratações novas foram suspensas. Os atendentes ficaram com os casos que pedem julgamento humano. Projeto encerrado em 8 semanas, operação autonoma desde a semana 10.
+          </p>
+          <div style="margin-top: 48px; display: flex; gap: 16px;">
+            <span class="badge badge--neutral">Caso · software B2B</span>
+            <span class="badge badge--neutral">8 semanas</span>
+            <span class="badge badge--amber">Em operação</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: var(--color-bg-sunken); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px;">
+            <div class="num-display" style="font-size: 88px; color: var(--color-accent);">70<span style="font-size: 36px; color: var(--color-fg-muted);">%</span></div>
+            <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.12em; color: var(--color-fg-subtle); text-transform: uppercase; margin-top: 12px;">tickets sem atendente</div>
+          </div>
+          <div style="background: var(--color-bg-sunken); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px;">
+            <div class="num-display" style="font-size: 88px; color: var(--color-accent);">3<span style="font-size: 36px; color: var(--color-fg-muted);"> hires</span></div>
+            <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.12em; color: var(--color-fg-subtle); text-transform: uppercase; margin-top: 12px;">evitados no plano anual</div>
+          </div>
+          <div style="background: var(--color-bg-sunken); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px;">
+            <div class="num-display" style="font-size: 88px; color: var(--color-accent);">R$ 240<span style="font-size: 36px; color: var(--color-fg-muted);">k poupados/ano</span></div>
+            <div style="font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.12em; color: var(--color-fg-subtle); text-transform: uppercase; margin-top: 12px;">vs plano original de hires</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>07 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 08 · Pricing ============ -->
+    <section data-screen-label="08 Pricing" class="slide">
+      <div class="eyebrow-slide"><span class="bar"></span>Escopo & investimento</div>
+      <h2 class="h2-slide" style="margin-bottom: 80px;">Um preço fechado para cada fase. Sem custo surpresa.</h2>
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: start;">
+        <div style="border-top: 1px solid var(--color-border-strong);">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--color-border);">
+            <div><div style="font-size: 24px; font-weight: 600; letter-spacing: -0.015em;">Fase 01 · Entender</div><div style="font-size: 16px; color: var(--color-fg-muted); margin-top: 6px;">2 semanas · documento do processo atual + materiais consolidados</div></div>
+            <div style="font-family: var(--font-mono); font-size: 24px; color: var(--color-fg); font-variant-numeric: tabular-nums;">R$ 12.000</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--color-border);">
+            <div><div style="font-size: 24px; font-weight: 600; letter-spacing: -0.015em;">Fase 02 · Planejar</div><div style="font-size: 16px; color: var(--color-fg-muted); margin-top: 6px;">1 semana · diagnóstico, plano de ação e arquitetura da solução</div></div>
+            <div style="font-family: var(--font-mono); font-size: 24px; color: var(--color-fg); font-variant-numeric: tabular-nums;">R$ 8.000</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--color-border);">
+            <div><div style="font-size: 24px; font-weight: 600; letter-spacing: -0.015em;">Fase 03 · Implementar</div><div style="font-size: 16px; color: var(--color-fg-muted); margin-top: 6px;">5 semanas · solução integrada, validada e entregue em operação</div></div>
+            <div style="font-family: var(--font-mono); font-size: 24px; color: var(--color-fg); font-variant-numeric: tabular-nums;">R$ 48.000</div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 28px 0; border-bottom: 1px solid var(--color-border-strong);">
+            <div><div style="font-size: 24px; font-weight: 600; letter-spacing: -0.015em; color: var(--color-fg);">Total · 8 semanas</div><div style="font-size: 16px; color: var(--color-fg-muted); margin-top: 6px;">Pagamento em 3 parcelas, ao fim de cada fase</div></div>
+            <div class="num-display" style="font-size: 56px; color: var(--color-accent);">R$ 68.000</div>
+          </div>
+          <div style="margin-top: 24px; padding: 24px; background: rgba(245,158,11,0.06); border-left: 2px solid var(--color-accent); border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+            <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 8px;">— Decisão por fase</div>
+            <div style="font-size: 18px; line-height: 1.55; color: var(--color-fg);">Você pode encerrar o trabalho ao fim de qualquer fase. Os entregáveis até ali ficam com você.</div>
+          </div>
+        </div>
+        <div>
+          <div style="padding: 32px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+            <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle); margin-bottom: 24px;">— ROI projetado</div>
+            <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--color-border); font-size: 16px;"><span style="color: var(--color-fg-muted);">Custo atual de atendimento</span><span style="font-family: var(--font-mono);">R$ 720k/ano</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--color-border); font-size: 16px;"><span style="color: var(--color-fg-muted);">Economia projetada</span><span style="font-family: var(--font-mono); color: var(--color-accent);">R$ 240k</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--color-border); font-size: 16px;"><span style="color: var(--color-fg-muted);">Investimento do projeto</span><span style="font-family: var(--font-mono);">R$ 68k</span></div>
+            <div style="display: flex; justify-content: space-between; padding: 14px 0; font-size: 16px;"><span style="color: var(--color-fg-muted);">Payback estimado</span><span style="font-family: var(--font-mono); color: var(--color-fg);">~3,5 meses</span></div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border-strong);">
+              <div class="num-display" style="font-size: 64px;">3,5<span style="font-size: 24px; color: var(--color-fg-muted);">× retorno · ano 1</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>08 / 09</span>
+      </div>
+    </section>
+
+    <!-- ============ 09 · Closing / signature ============ -->
+    <section data-screen-label="09 Close" class="slide slide--dark slide--center">
+      <div style="position: absolute; inset: 0; background: radial-gradient(circle at 20% 60%, rgba(245,158,11,0.10), transparent 50%);"></div>
+      <div style="position: relative; max-width: 1500px;">
+        <div class="eyebrow-slide"><span class="bar"></span>Próximo passo</div>
+        <h1 class="display" style="max-width: 1480px;">
+          Próximo passo: uma <em>conversa</em>.
+        </h1>
+        <p class="lede-slide" style="font-size: 28px; max-width: 1100px;">
+          Posso entrar no time da Acme Tech na semana de <strong style="color: var(--color-fg);">26 de maio</strong>. Você me confirma a primeira reunião e eu envio a agenda — pode ser via vídeo ou presencial.
+        </p>
+        <div style="margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--color-border-strong); display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px;">
+          <div>
+            <div class="kicker">E-mail</div>
+            <div style="font-size: 22px; font-family: var(--font-mono); margin-top: 12px; color: var(--color-fg);">contato@alexandre.ai</div>
+          </div>
+          <div>
+            <div class="kicker">WhatsApp</div>
+            <div style="font-size: 22px; font-family: var(--font-mono); margin-top: 12px; color: var(--color-fg);">+55 11 9 9999-0000</div>
+          </div>
+          <div>
+            <div class="kicker">Agenda direta</div>
+            <div style="font-size: 22px; font-family: var(--font-mono); margin-top: 12px; color: var(--color-accent);">alexandre.ai/calendar →</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-chrome">
+        <div class="slide-chrome-brand"><b>Alexandre</b><span>Consultor<span class="ia">IA</span></span></div>
+        <span>09 / 09</span>
+      </div>
+    </section>
+
+  </deck-stage>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 24px; }
+    .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .header h3 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+    .header span { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-subtle); letter-spacing: 0.04em; text-transform: uppercase; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 12px 14px; font-size: 14px; vertical-align: middle; text-align: left; border-bottom: 1px solid var(--color-border); }
+    th { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+    th.is { color: var(--color-success); }
+    th.isnt { color: var(--color-danger); }
+    td.is { color: var(--color-fg); font-weight: 500; }
+    td.isnt { color: var(--color-fg-muted); font-style: italic; }
+    tr:last-child td { border-bottom: none; }
+  </style>
+  <div class="header"><h3>É / Não é</h3><span>polaridade do tom</span></div>
+  <table>
+    <thead>
+      <tr><th class="is">É</th><th class="isnt">Não é</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="is">Direto</td><td class="isnt">Prolixo</td></tr>
+      <tr><td class="is">Profissional</td><td class="isnt">Informal em excesso</td></tr>
+      <tr><td class="is">Acessível</td><td class="isnt">Distante</td></tr>
+      <tr><td class="is">Confiante</td><td class="isnt">Arrogante</td></tr>
+    </tbody>
+  </table>
+</body></html>

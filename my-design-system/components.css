@@ -1,0 +1,164 @@
+/* =============================================================
+   Alexandre Afonso — ConsultorIA
+   Component primitives. Imports tokens from colors_and_type.css.
+   ============================================================= */
+@import url("./colors_and_type.css");
+
+/* ----- Buttons -------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  height: 40px; padding: 0 var(--space-5);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-tight);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+  user-select: none;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(0.5px); }
+.btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-fg-on-amber);
+  border-color: var(--color-accent);
+}
+.btn--primary:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+.btn--primary:active { background: var(--color-accent-press); border-color: var(--color-accent-press); }
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-fg);
+  border-color: var(--color-border-strong);
+}
+.btn--secondary:hover { background: var(--color-surface-hover); border-color: var(--color-border-strong); }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-fg-muted);
+  border-color: transparent;
+}
+.btn--ghost:hover { color: var(--color-fg); background: var(--color-surface-hover); }
+
+.btn--lg { height: 48px; padding: 0 var(--space-6); font-size: var(--fs-base); }
+.btn--sm { height: 32px; padding: 0 var(--space-3); font-size: var(--fs-xs); }
+
+/* ----- Cards ---------------------------------------------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--dur-normal) var(--ease-out),
+              background var(--dur-normal) var(--ease-out);
+}
+.card--hover:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-hover);
+}
+.card--elevated {
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-md);
+}
+.card--bare { background: transparent; border-radius: 0; padding: 0; border: none; }
+
+/* ----- Inputs --------------------------------------------- */
+.field {
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+.field__label {
+  font-size: var(--fs-xs); font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-fg-subtle);
+}
+.input, .textarea, .select {
+  background: var(--color-bg-sunken);
+  border: 1px solid var(--color-border);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+  width: 100%;
+}
+.input:focus, .textarea:focus, .select:focus {
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+.textarea { min-height: 96px; resize: vertical; font-family: inherit; }
+
+/* ----- Badges / pills ------------------------------------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-fg-muted);
+  background: transparent;
+}
+.badge--amber { color: var(--color-accent); border-color: rgba(245,158,11,0.4); background: var(--color-accent-soft); }
+.badge--solid { background: var(--color-accent); color: var(--color-fg-on-amber); border-color: var(--color-accent); }
+.badge--success { color: var(--color-success); border-color: color-mix(in oklab, var(--color-success) 60%, transparent); }
+.badge--neutral { color: var(--color-fg); border-color: var(--color-border-strong); }
+
+/* ----- Indicator dot -------------------------------------- */
+.dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }
+.dot--pulse { box-shadow: 0 0 0 0 currentColor; animation: dot-pulse 1.8s var(--ease-out) infinite; }
+@keyframes dot-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, currentColor 60%, transparent); }
+  70% { box-shadow: 0 0 0 6px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ----- Hairline divider ----------------------------------- */
+.divider { height: 1px; background: var(--color-border); border: 0; margin: var(--space-6) 0; }
+.divider--strong { background: var(--color-border-strong); }
+
+/* ----- Tag (numbered or labeled, monospace) --------------- */
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-fg-subtle);
+  text-transform: uppercase;
+}
+
+/* ----- Section frame -------------------------------------- */
+.section {
+  padding: var(--space-20) var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.container { max-width: var(--container); margin: 0 auto; }
+.container--narrow { max-width: var(--container-narrow); margin: 0 auto; }
+.container--wide { max-width: var(--container-wide); margin: 0 auto; }
+
+/* ----- Decorative grid backdrop --------------------------- */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.bg-dot {
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ----- Focus ring helper ---------------------------------- */
+.focus-ring:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: var(--radius-sm); }

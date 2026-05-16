@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 28px; }
+    .group { display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; align-items: center; gap: 12px; }
+    .label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle); width: 80px; flex-shrink: 0; }
+  </style>
+  <div class="group">
+    <div class="row">
+      <div class="label">primary</div>
+      <button class="btn btn--primary">Agendar diagnóstico</button>
+      <button class="btn btn--primary"><span>Falar comigo</span><span aria-hidden="true">→</span></button>
+      <button class="btn btn--primary btn--lg">Quero entender</button>
+    </div>
+    <div class="row">
+      <div class="label">secondary</div>
+      <button class="btn btn--secondary">Ver casos</button>
+      <button class="btn btn--secondary">Baixar PDF</button>
+      <button class="btn btn--secondary btn--sm">Compartilhar</button>
+    </div>
+    <div class="row">
+      <div class="label">ghost</div>
+      <button class="btn btn--ghost">Sobre</button>
+      <button class="btn btn--ghost">Posts</button>
+      <button class="btn btn--ghost btn--sm">Voltar</button>
+    </div>
+    <div class="row">
+      <div class="label">disabled</div>
+      <button class="btn btn--primary" disabled style="opacity:0.4; pointer-events:none">Indisponível</button>
+      <button class="btn btn--secondary" disabled style="opacity:0.4; pointer-events:none">Indisponível</button>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    .row { display: grid; grid-template-columns: repeat(11, 1fr); gap: 6px; }
+    .swatch { display: flex; flex-direction: column; gap: 6px; }
+    .chip { aspect-ratio: 1 / 1.05; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.06); }
+    .label { font-family: var(--font-mono); font-size: 10px; color: var(--color-fg-muted); display: flex; flex-direction: column; gap: 1px; }
+    .label b { color: var(--color-fg); font-weight: 500; }
+    .header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+    .header h3 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+    .header span { font-family: var(--font-mono); font-size: 11px; color: var(--color-fg-subtle); letter-spacing: 0.04em; text-transform: uppercase; }
+  </style>
+  <div class="header"><h3>Navy</h3><span>primary brand · anchor #1a2a4a</span></div>
+  <div class="row">
+    <div class="swatch"><div class="chip" style="background:var(--navy-50)"></div><div class="label"><b>50</b>e8edf5</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-100)"></div><div class="label"><b>100</b>c5d0e3</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-200)"></div><div class="label"><b>200</b>8fa1c0</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-300)"></div><div class="label"><b>300</b>5a729e</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-400)"></div><div class="label"><b>400</b>34507f</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-500); box-shadow: 0 0 0 1px var(--color-accent) inset"></div><div class="label"><b>500★</b>1a2a4a</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-600)"></div><div class="label"><b>600</b>15233e</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-700)"></div><div class="label"><b>700</b>101b30</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-800)"></div><div class="label"><b>800</b>0b1322</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-900)"></div><div class="label"><b>900</b>060b16</div></div>
+    <div class="swatch"><div class="chip" style="background:var(--navy-950)"></div><div class="label"><b>950</b>03070f</div></div>
+  </div>
+</body></html>

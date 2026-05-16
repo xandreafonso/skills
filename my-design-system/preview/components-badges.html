@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 28px; }
+    .group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
+    .label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle); width: 100%; margin-bottom: 4px; }
+  </style>
+  <div class="group">
+    <div class="label">Badges</div>
+    <span class="badge">Default</span>
+    <span class="badge badge--neutral">Em desenvolvimento</span>
+    <span class="badge badge--amber"><span class="dot" style="background: var(--color-accent)"></span>Em operação</span>
+    <span class="badge badge--solid">Novo</span>
+    <span class="badge badge--success"><span class="dot" style="background: var(--color-success)"></span>Online</span>
+  </div>
+  <div class="group">
+    <div class="label">Dots de status</div>
+    <span style="display:inline-flex; align-items:center; gap:8px; font-size:13px; color: var(--color-fg-muted)"><span class="dot dot--pulse" style="color: var(--color-success); background: var(--color-success)"></span>3 agentes ativos</span>
+    <span style="display:inline-flex; align-items:center; gap:8px; font-size:13px; color: var(--color-fg-muted); margin-left: 18px"><span class="dot" style="background: var(--color-warning)"></span>1 com atraso</span>
+    <span style="display:inline-flex; align-items:center; gap:8px; font-size:13px; color: var(--color-fg-muted); margin-left: 18px"><span class="dot" style="background: var(--color-fg-disabled)"></span>2 pausados</span>
+  </div>
+  <div class="group">
+    <div class="label">Tags mono</div>
+    <span class="tag">— Estratégia</span>
+    <span class="tag" style="margin-left:18px">— Implementação</span>
+    <span class="tag" style="margin-left:18px">— Operação</span>
+  </div>
+</body></html>

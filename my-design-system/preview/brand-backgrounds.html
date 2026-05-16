@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_shell.css"></head>
+<body>
+  <style>
+    body { padding: 0; }
+    .canvas { padding: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .bg { aspect-ratio: 1.4 / 1; border-radius: var(--radius-md); padding: 14px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--color-border); }
+    .bg .name { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-muted); }
+    .bg .desc { font-family: var(--font-mono); font-size: 9px; color: var(--color-fg-subtle); }
+    .bg-1 { background: var(--navy-900); }
+    .bg-2 { background: var(--navy-800); background-image: linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 32px 32px; }
+    .bg-3 { background: var(--navy-900); background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 20px 20px; }
+    .bg-4 { background: radial-gradient(ellipse at top left, var(--navy-500) 0%, var(--navy-900) 55%); }
+    .bg-5 { background: var(--navy-950); }
+    .bg-5::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 70% 30%, rgba(245,158,11,0.22), transparent 50%); }
+    .bg-6 { background: var(--navy-900); }
+    .bg-6::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(45deg, transparent 49.5%, rgba(255,255,255,0.04) 49.5%, rgba(255,255,255,0.04) 50.5%, transparent 50.5%); background-size: 18px 18px; }
+  </style>
+  <div class="canvas">
+    <div class="bg bg-1"><span class="name">solid</span><span class="desc">navy-900</span></div>
+    <div class="bg bg-2"><span class="name">grid</span><span class="desc">blueprint · 32px</span></div>
+    <div class="bg bg-3"><span class="name">dots</span><span class="desc">subtle · 20px</span></div>
+    <div class="bg bg-4"><span class="name">vignette</span><span class="desc">radial highlight</span></div>
+    <div class="bg bg-5"><span class="name" style="position:relative; z-index:1">glow amber</span><span class="desc" style="position:relative; z-index:1">accent flare</span></div>
+    <div class="bg bg-6"><span class="name" style="position:relative; z-index:1">hatch</span><span class="desc" style="position:relative; z-index:1">diagonal · 18px</span></div>
+  </div>
+</body></html>
