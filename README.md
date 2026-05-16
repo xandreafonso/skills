@@ -1,3 +1,9 @@
+# Instalação
+
+```powershell
+pnpm dlx skills add xandreafonso/skills --skill skill-name
+```
+
 # Skills Úteis
 
 ```powershell
