@@ -239,6 +239,11 @@
       background: rgba(255,255,255,0.12);
       border-radius: 4px;
     }
+    .btn.rail-toggle[data-active] { color: #fff; }
+    .btn.rail-toggle[data-active] .kbd {
+      color: #1a1a1a;
+      background: rgba(255,255,255,0.92);
+    }
 
     .count {
       font-variant-numeric: tabular-nums;
@@ -859,12 +864,15 @@
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg>
         </button>
         <span class="divider"></span>
-        <button class="btn reset" type="button" aria-label="Reset to first slide" title="Reset (R)">Reset<span class="kbd">R</span></button>
+        <button class="btn reset" type="button" aria-label="Recomeçar do primeiro slide" title="Recomeçar (R)">Recomeçar<span class="kbd">R</span></button>
+        <button class="btn reset rail-toggle" type="button" aria-label="Toggle thumbnails" title="Toggle thumbnails (M)">Miniaturas<span class="kbd">M</span></button>
       `;
 
       overlay.querySelector('.prev').addEventListener('click', () => this._advance(-1, 'click'));
       overlay.querySelector('.next').addEventListener('click', () => this._advance(1, 'click'));
-      overlay.querySelector('.reset').addEventListener('click', () => this._go(0, 'click'));
+      overlay.querySelector('.reset:not(.rail-toggle)').addEventListener('click', () => this._go(0, 'click'));
+      overlay.querySelector('.rail-toggle').addEventListener('click', () => this._setRailVisible(!this._railVisible));
+      this._railToggleBtn = overlay.querySelector('.rail-toggle');
 
       // Thumbnail rail + context menu. Thumbnails are populated in
       // _renderRail() after _collectSlides().
@@ -1151,7 +1159,7 @@
       // slide full-width for one frame before the post-slotchange _fit()
       // corrects it.
       if (!this._railEnabled || !this._railVisible || this.hasAttribute('no-rail')
-          || this.hasAttribute('noscale') || this._presenting || this._previewMode) return 0;
+          || this.hasAttribute('noscale') || this._presenting) return 0;
       return this._railPx || 0;
     }
 
@@ -1221,30 +1229,52 @@
       // whether the Tweaks panel itself is open — closing the panel
       // doesn't change rail visibility. Persists alongside rail width.
       if (d && d.type === '__deck_rail_visible' && typeof d.on === 'boolean') {
-        if (d.on === this._railVisible) return;
-        this._railVisible = d.on;
-        try { localStorage.setItem('deck-stage.railVisible', d.on ? '1' : '0'); } catch (e) {}
-        // Arm the transition, commit it, then flip state — otherwise the
-        // browser coalesces both writes and nothing animates on show.
-        this.setAttribute('data-rail-anim', '');
-        void (this._rail && this._rail.offsetHeight);
-        this._syncRailHidden();
-        this._fit();
-        this._scaleThumbs();
-        clearTimeout(this._railAnimTimer);
-        this._railAnimTimer = setTimeout(() => this.removeAttribute('data-rail-anim'), 220);
+        this._setRailVisible(d.on);
       }
       if (d && d.type === '__omelette_rail_enabled') this._enableRail();
     }
 
+    /** Show/hide the thumbnail rail with the slide animation. Shared by the
+     *  TweaksPanel toggle message, the footer button, and the M shortcut.
+     *  No-op when the rail is hard-hidden (presenting / preview / noscale /
+     *  no-rail) so the keypress can't strand the stage with a phantom gutter. */
+    _setRailVisible(on) {
+      if (on === this._railVisible) { this._syncRailToggleBtn(); return; }
+      if (on && (!this._railEnabled || this._presenting
+          || this.hasAttribute('no-rail') || this.hasAttribute('noscale'))) return;
+      this._railVisible = on;
+      try { localStorage.setItem('deck-stage.railVisible', on ? '1' : '0'); } catch (e) {}
+      // Arm the transition, commit it, then flip state — otherwise the
+      // browser coalesces both writes and nothing animates on show.
+      this.setAttribute('data-rail-anim', '');
+      void (this._rail && this._rail.offsetHeight);
+      this._syncRailHidden();
+      this._fit();
+      this._scaleThumbs();
+      this._syncRailToggleBtn();
+      clearTimeout(this._railAnimTimer);
+      this._railAnimTimer = setTimeout(() => this.removeAttribute('data-rail-anim'), 220);
+    }
+
+    _syncRailToggleBtn() {
+      if (!this._railToggleBtn) return;
+      const visible = this._railVisible && this._railEnabled
+        && !this._presenting
+        && !this.hasAttribute('no-rail') && !this.hasAttribute('noscale');
+      if (visible) this._railToggleBtn.setAttribute('data-active', '');
+      else this._railToggleBtn.removeAttribute('data-active');
+    }
+
     _syncRailHidden() {
       if (!this._rail) return;
-      // data-presenting is the hard hide (display:none) for flag-off,
-      // presentation mode, and the host's Preview segment — instant, no
-      // transition. data-user-hidden is the soft hide (translateX(-100%))
-      // for the viewer's rail toggle, so show/hide slides under
+      // data-presenting is the hard hide (display:none) for flag-off and
+      // fullscreen presentation mode — instant, no transition. The host's
+      // Preview segment no longer hard-hides: the rail is a viewer-facing
+      // toggle (M / footer button) here, so it honors _railVisible while
+      // viewing. data-user-hidden is the soft hide (translateX(-100%)) for
+      // the viewer's rail toggle, so show/hide slides under
       // :host([data-rail-anim]).
-      const hard = !this._railEnabled || this._presenting || this._previewMode;
+      const hard = !this._railEnabled || this._presenting;
       if (hard) this._rail.setAttribute('data-presenting', '');
       else this._rail.removeAttribute('data-presenting');
       if (!this._railVisible) this._rail.setAttribute('data-user-hidden', '');
@@ -1252,6 +1282,7 @@
       // translateX hide leaves thumbs (tabIndex=0) in the tab order —
       // inert keeps them unfocusable while the rail is off-screen.
       this._rail.inert = hard || !this._railVisible;
+      this._syncRailToggleBtn();
     }
 
     _onTapBack(e) {
@@ -1295,6 +1326,8 @@
         this._go(this._slides.length - 1, 'keyboard');
       } else if (key === 'r' || key === 'R') {
         this._go(0, 'keyboard');
+      } else if (key === 'm' || key === 'M') {
+        this._setRailVisible(!this._railVisible);
       } else if (/^[0-9]$/.test(key)) {
         // 1..9 jump to that slide; 0 jumps to 10.
         const n = key === '0' ? 9 : parseInt(key, 10) - 1;

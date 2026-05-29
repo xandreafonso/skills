@@ -1,0 +1,23 @@
+{
+  "skill_name": "react-best-practices",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie um componente React para selecionar um produto dentro de uma lista. O componente pai já tem categoryId e selectedProductId, mas não quero passar a lista completa de products para o filho.",
+      "expected_output": "A solução deve aplicar as regras de composição: props pequenas entre arquivos, uso do hook/query cache no filho quando apropriado, callbacks para intenção do usuário e ordem correta de componentes no arquivo.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Crie um dialog shadcn chamado CreateProductDialog para abrir via botão do componente pai. Ele recebe categoryId e deve seguir o padrão descrito na skill.",
+      "expected_output": "A solução deve usar a estrutura de Dialog shell preservada: children alias como trigger, controle open/onOpenChange com estado interno e sincronização dupla, sem DialogTrigger interno, ações no DialogFooter e uso pelo pai com DialogTrigger asChild.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Crie um ruc/useQuery para listar products de uma category com filtros status[] e brand. O endpoint fica em /api/categories/[categoryId]/products.",
+      "expected_output": "A solução deve criar o hook na pasta que espelha a rota, tipar query params explicitamente, usar kebab-case e omitir sufixo id quando aplicável, tratar arrays com append, configurar enabled corretamente, renomear flags por entidade e expor helpers de cache conforme o padrão.",
+      "files": []
+    }
+  ]
+}

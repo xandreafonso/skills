@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Proposta comercial · Alexandre Afonso × Acme Tech</title>
+
+  <!-- Design system: tokens + primitivos -->
+  <link rel="stylesheet" href="../colors_and_type.css" />
+  <link rel="stylesheet" href="../components.css" />
+
+  <style>
+    /* =============================================================
+       TEMPLATE · Proposta comercial (A4 vertical, print-ready)
+       Alexandre Afonso — ConsultorIA
+
+       Como reaproveitar (para humano ou IA):
+       - Cada página é uma <section class="sheet"> de 794×1123px (A4 @96dpi).
+       - Blocos de conteúdo substituível estão marcados com  <!-- @campo -->.
+       - Troque texto/números livremente; o layout se mantém.
+       - Para gerar PDF: imprimir → A4 → margens "Nenhuma" → ativar
+         "Gráficos de plano de fundo". Já vem com print-color-adjust.
+       - Mantenha o tom: frases curtas, voz ativa, números honestos,
+         sem buzzwords, próximo passo claro. Sem emoji.
+       ============================================================= */
+
+    :root {
+      --sheet-w: 794px;          /* A4 width  @96dpi */
+      --sheet-h: 1123px;         /* A4 height @96dpi */
+      --sheet-pad-x: 64px;
+      --sheet-pad-y: 60px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: var(--navy-950);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen: stack sheets vertically on a dark backdrop */
+    .doc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      padding: 40px 16px 64px;
+    }
+
+    .sheet {
+      position: relative;
+      width: var(--sheet-w);
+      height: var(--sheet-h);
+      background: var(--navy-900);
+      color: var(--color-fg);
+      padding: var(--sheet-pad-y) var(--sheet-pad-x);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+    }
+    .sheet--dark { background: var(--navy-950); }
+
+    /* Blueprint grid backdrop (signature) */
+    .sheet__grid::before {
+      content: "";
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 55% at 25% 22%, black 20%, transparent 72%);
+      mask-image: radial-gradient(ellipse 75% 55% at 25% 22%, black 20%, transparent 72%);
+    }
+    /* Amber vignette for closing page */
+    .sheet__glow::after {
+      content: "";
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 78% 18%, rgba(245,158,11,0.10), transparent 46%);
+    }
+
+    /* ---- Running header / footer ---- */
+    .run-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 22px; margin-bottom: 36px;
+      border-bottom: 1px solid var(--color-border);
+      position: relative; z-index: 1;
+    }
+    .wordmark {
+      display: flex; flex-direction: column; line-height: 1;
+    }
+    .wordmark b {
+      font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: var(--color-fg);
+    }
+    .wordmark span {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--color-fg-subtle); margin-top: 5px;
+    }
+    .wordmark span .ia { color: var(--color-accent); }
+    .run-head__meta {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--color-fg-subtle); text-align: right;
+    }
+
+    .run-foot {
+      position: absolute; left: var(--sheet-pad-x); right: var(--sheet-pad-x); bottom: 34px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--color-fg-subtle);
+      padding-top: 16px; border-top: 1px solid var(--color-border);
+      z-index: 1;
+    }
+
+    /* ---- Type helpers tuned for print scale ---- */
+    .eyebrow-doc {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .eyebrow-doc .bar { width: 28px; height: 1px; background: var(--color-accent); }
+
+    .title-cover {
+      font-size: 52px; font-weight: 500; letter-spacing: -0.04em;
+      line-height: 1.02; margin: 0; color: var(--color-fg); text-wrap: balance;
+    }
+    .title-cover em { font-style: normal; color: var(--color-accent); }
+
+    .h-sec {
+      font-size: 30px; font-weight: 600; letter-spacing: -0.02em;
+      line-height: 1.12; margin: 0; color: var(--color-fg); text-wrap: balance;
+    }
+    .lede-doc {
+      font-size: 17px; line-height: 1.5; letter-spacing: -0.01em;
+      color: var(--color-fg-muted); margin: 0; text-wrap: pretty;
+    }
+    .body-doc {
+      font-size: 14px; line-height: 1.62; color: var(--color-fg-muted);
+      margin: 0; text-wrap: pretty;
+    }
+    .body-doc strong { color: var(--color-fg); font-weight: 600; }
+    .kicker-doc {
+      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle);
+    }
+    .num {
+      font-variant-numeric: tabular-nums; font-weight: 500;
+      letter-spacing: -0.03em; color: var(--color-accent); line-height: 1;
+    }
+
+    .stack { display: flex; flex-direction: column; }
+    .body-flow { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; }
+
+    /* ---- Cover meta grid ---- */
+    .meta-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border-top: 1px solid var(--color-border-strong);
+    }
+    .meta-grid > div {
+      padding: 22px 24px 22px 0; border-right: 1px solid var(--color-border);
+    }
+    .meta-grid > div:last-child { border-right: 0; padding-left: 24px; }
+    .meta-grid > div:nth-child(2) { padding-left: 24px; }
+    .meta-grid .v { font-size: 19px; font-weight: 600; letter-spacing: -0.015em; margin-top: 10px; color: var(--color-fg); }
+    .meta-grid .s { font-size: 12px; color: var(--color-fg-muted); margin-top: 4px; }
+
+    /* ---- KPI row ---- */
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--color-border);
+    }
+    .kpi-row > div { padding: 26px 24px 0 0; border-right: 1px solid var(--color-border); }
+    .kpi-row > div:last-child { border-right: 0; padding-right: 0; padding-left: 24px; }
+    .kpi-row > div:nth-child(2) { padding-left: 24px; }
+    .kpi-row .num { font-size: 54px; white-space: nowrap; }
+    .kpi-row .num small { font-size: 24px; color: var(--color-fg-muted); }
+    .kpi-row .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-fg-subtle); margin-top: 12px; }
+    .kpi-row .desc { font-size: 12.5px; color: var(--color-fg-muted); margin-top: 10px; line-height: 1.45; }
+
+    /* ---- Phase cards ---- */
+    .phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .phase {
+      border: 1px solid var(--color-border); border-radius: var(--radius-md);
+      background: var(--color-surface); padding: 22px; display: flex; flex-direction: column;
+    }
+    .phase__tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 18px; }
+    .phase__h { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 16px; }
+    .phase__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .phase__list li { font-family: var(--font-mono); font-size: 11.5px; color: var(--color-fg-muted); display: flex; gap: 9px; line-height: 1.35; }
+    .phase__list li span { color: var(--color-fg-subtle); }
+    .phase__foot { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--color-border-strong); display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-fg-subtle); }
+    .phase__foot b { color: var(--color-fg); font-weight: 500; }
+
+    /* ---- Timeline ---- */
+    .timeline { position: relative; padding-top: 30px; }
+    .timeline__line { position: absolute; left: 0; right: 0; top: 44px; height: 1px; background: var(--color-border); }
+    .timeline__weeks { display: grid; grid-template-columns: repeat(8, 1fr); }
+    .tw { position: relative; padding: 0 6px; text-align: center; }
+    .tw .pt { position: absolute; left: 50%; top: 16px; width: 9px; height: 9px; border-radius: 50%; background: var(--color-fg-muted); transform: translateX(-50%); }
+    .tw .pt--key { width: 11px; height: 11px; background: var(--color-accent); }
+    .tw .wk { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; color: var(--color-fg-subtle); text-transform: uppercase; margin-top: 36px; }
+    .tw .nm { font-size: 11.5px; margin-top: 6px; color: var(--color-fg-muted); }
+    .tw .nm--key { color: var(--color-fg); }
+
+    .milestones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .ms { padding: 16px 18px; border-left: 2px solid var(--color-accent); background: rgba(245,158,11,0.06); }
+    .ms .t { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; color: var(--color-accent); text-transform: uppercase; margin-bottom: 8px; }
+    .ms .d { font-size: 13px; line-height: 1.4; color: var(--color-fg); }
+
+    /* ---- Pricing table ---- */
+    .price { border-top: 1px solid var(--color-border-strong); }
+    .price__row { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--color-border); }
+    .price__row .lt { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; }
+    .price__row .ls { font-size: 12px; color: var(--color-fg-muted); margin-top: 5px; max-width: 360px; line-height: 1.4; }
+    .price__row .val { font-family: var(--font-mono); font-size: 17px; color: var(--color-fg); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .price__row--total { border-bottom: 1px solid var(--color-border-strong); }
+    .price__row--total .lt { color: var(--color-fg); }
+    .price__row--total .num { font-size: 34px; white-space: nowrap; }
+
+    .note {
+      margin-top: 18px; padding: 16px 18px; background: rgba(245,158,11,0.06);
+      border-left: 2px solid var(--color-accent); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .note .t { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 7px; }
+    .note .d { font-size: 13.5px; line-height: 1.5; color: var(--color-fg); }
+
+    .roi {
+      padding: 22px; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    }
+    .roi__h { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-fg-subtle); margin-bottom: 16px; }
+    .roi__line { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--color-border); font-size: 13px; }
+    .roi__line span:first-child { color: var(--color-fg-muted); }
+    .roi__line span:last-child { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .roi__line--accent span:last-child { color: var(--color-accent); }
+    .roi__big { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border-strong); }
+    .roi__big .num { font-size: 40px; }
+    .roi__big .num small { font-size: 14px; color: var(--color-fg-muted); }
+
+    /* ---- Contact block ---- */
+    .contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding-top: 18px; margin-top: 16px; border-top: 1px solid var(--color-border-strong); }
+    .contact .v { font-size: 15px; font-family: var(--font-mono); margin-top: 9px; color: var(--color-fg); }
+    .contact .v.accent { color: var(--color-accent); }
+
+    .sign { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 16px; }
+    .sign__box { padding-top: 12px; border-top: 1px solid var(--color-border-strong); }
+    .sign__box .ln { height: 18px; }
+    .sign__box .who { font-size: 13px; color: var(--color-fg-muted); }
+    .sign__box .who b { color: var(--color-fg); font-weight: 600; }
+
+    /* =================== PRINT =================== */
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: #fff; }
+      .doc { padding: 0; gap: 0; }
+      .sheet {
+        box-shadow: none;
+        width: 210mm; height: 297mm;
+        page-break-after: always; break-after: page;
+      }
+      .sheet:last-child { page-break-after: auto; break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="doc">
+
+    <!-- =========================================================
+         PÁGINA 1 · CAPA
+         ========================================================= -->
+    <section class="sheet sheet__grid" data-screen-label="P1 Capa">
+      <header class="run-head">
+        <div class="wordmark">
+          <b>Alexandre Afonso</b>
+          <span>Consultor<span class="ia">IA</span> · inteligência aplicada</span>
+        </div>
+        <!-- @doc-meta -->
+        <div class="run-head__meta">Proposta comercial<br/>v1.0 · confidencial</div>
+      </header>
+
+      <div class="body-flow">
+        <div class="eyebrow-doc"><span class="bar"></span>Para a Acme Tech · maio 2026</div>
+
+        <!-- @titulo -->
+        <h1 class="title-cover" style="margin-top: 28px; max-width: 620px;">
+          Automação do atendimento de pós-venda <em>com IA</em>.
+        </h1>
+
+        <!-- @resumo -->
+        <p class="lede-doc" style="margin-top: 26px; max-width: 560px;">
+          Sua operação responde em média em 12 horas, e 70% dos chamados são as
+          mesmas perguntas. Proponho um agente que resolve esse volume repetitivo —
+          para a equipe ficar com o que pede julgamento humano. Escopo fechado, em três fases.
+        </p>
+
+        <div style="flex: 1;"></div>
+
+        <!-- @meta -->
+        <div class="meta-grid">
+          <div>
+            <div class="kicker-doc">Para</div>
+            <div class="v">Acme Tech</div>
+            <div class="s">A/C Direção · Operações</div>
+          </div>
+          <div>
+            <div class="kicker-doc">Por</div>
+            <div class="v">Alexandre Afonso</div>
+            <div class="s">ConsultorIA · CNPJ sob consulta</div>
+          </div>
+          <div>
+            <div class="kicker-doc">Validade</div>
+            <div class="v">30 dias</div>
+            <div class="s">29 mai 2026 → 28 jun 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="run-foot">
+        <span>É a inteligência orgânica que faz a IA funcionar</span>
+        <span>01 / 04</span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 2 · CONTEXTO & DIAGNÓSTICO
+         ========================================================= -->
+    <section class="sheet" data-screen-label="P2 Contexto">
+      <header class="run-head">
+        <div class="wordmark">
+          <b>Alexandre Afonso</b>
+          <span>Consultor<span class="ia">IA</span></span>
+        </div>
+        <div class="run-head__meta">Acme Tech · pós-venda</div>
+      </header>
+
+      <div class="body-flow">
+        <div class="eyebrow-doc"><span class="bar"></span>Parte 01 · O contexto, hoje</div>
+        <!-- @secao-contexto-titulo -->
+        <h2 class="h-sec" style="margin-top: 18px; max-width: 600px;">
+          Antes de propor solução, registro como o processo funciona hoje.
+        </h2>
+        <!-- @secao-contexto-intro -->
+        <p class="body-doc" style="margin-top: 18px; max-width: 600px; font-size: 15px;">
+          Com base nas reuniões e nos materiais coletados, três números resumem a
+          operação de atendimento. Eles são o ponto de partida — e a régua para
+          medir o resultado depois.
+        </p>
+
+        <!-- @kpis -->
+        <div class="kpi-row" style="margin-top: 40px;">
+          <div>
+            <div class="num">12<small> h</small></div>
+            <div class="lbl">SLA de primeira resposta</div>
+            <div class="desc">Meta interna é 2h. Não foi batida em nenhum mês de 2025.</div>
+          </div>
+          <div>
+            <div class="num">70<small> %</small></div>
+            <div class="lbl">Chamados repetitivos</div>
+            <div class="desc">As mesmas 12 perguntas representam 70% do volume mensal.</div>
+          </div>
+          <div>
+            <div class="num">R$ 720<small> k</small></div>
+            <div class="lbl">Custo anual atual</div>
+            <div class="desc">8 atendentes hoje, com plano de mais 3 contratações no ano.</div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin: 40px 0;" />
+
+        <!-- @o-que-proponho -->
+        <div class="eyebrow-doc"><span class="bar"></span>O que proponho</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 18px;">
+          <p class="body-doc" style="font-size: 15px;">
+            Um agente de IA que cobre as 12 perguntas que concentram 70% dos chamados,
+            integrado aos sistemas que a Acme já usa. Ele responde na hora os casos
+            simples e encaminha para um atendente os que pedem julgamento.
+          </p>
+          <p class="body-doc" style="font-size: 15px;">
+            Não é uma demo genérica. <strong>Documento o processo atual, desenho a
+            arquitetura e implemento contra casos reais do seu histórico.</strong> Você
+            decide seguir — ou não — ao fim de cada fase.
+          </p>
+        </div>
+      </div>
+
+      <div class="run-foot">
+        <span>Proposta comercial · confidencial</span>
+        <span>02 / 04</span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 3 · MÉTODO & CRONOGRAMA
+         ========================================================= -->
+    <section class="sheet" data-screen-label="P3 Método">
+      <header class="run-head">
+        <div class="wordmark">
+          <b>Alexandre Afonso</b>
+          <span>Consultor<span class="ia">IA</span></span>
+        </div>
+        <div class="run-head__meta">Método · 8 semanas</div>
+      </header>
+
+      <div class="body-flow">
+        <div class="eyebrow-doc"><span class="bar"></span>Parte 02 · Como vamos trabalhar</div>
+        <!-- @secao-metodo-titulo -->
+        <h2 class="h-sec" style="margin-top: 18px;">Três fases, cada uma com entrega clara no fim.</h2>
+        <p class="body-doc" style="margin-top: 14px; max-width: 600px; font-size: 14px;">
+          Você sabe o que recebe em cada fase, o prazo e o investimento. Pode encerrar
+          ao fim de qualquer uma — os entregáveis até ali ficam com você.
+        </p>
+
+        <!-- @fases -->
+        <div class="phases" style="margin-top: 30px;">
+          <div class="phase">
+            <div class="phase__tag">— 01 · Entender</div>
+            <div class="phase__h">Reuniões, coleta e documentação do processo.</div>
+            <ul class="phase__list">
+              <li><span>—</span> Reuniões com a operação</li>
+              <li><span>—</span> Coleta de materiais e sistemas</li>
+              <li><span>—</span> Análise dos pontos de fricção</li>
+              <li><span>—</span> Documento do processo atual</li>
+            </ul>
+            <div class="phase__foot"><span>Duração</span><b>2 semanas</b></div>
+          </div>
+          <div class="phase">
+            <div class="phase__tag">— 02 · Planejar</div>
+            <div class="phase__h">Diagnóstico, plano de ação e arquitetura.</div>
+            <ul class="phase__list">
+              <li><span>—</span> Diagnóstico dos problemas</li>
+              <li><span>—</span> Plano de ação priorizado</li>
+              <li><span>—</span> Arquitetura da solução</li>
+              <li><span>—</span> Escolha justificada de stack</li>
+            </ul>
+            <div class="phase__foot"><span>Duração</span><b>1 semana</b></div>
+          </div>
+          <div class="phase">
+            <div class="phase__tag">— 03 · Implementar</div>
+            <div class="phase__h">Implementação, integração e entrega.</div>
+            <ul class="phase__list">
+              <li><span>—</span> Implementação em ciclos curtos</li>
+              <li><span>—</span> Integração com os sistemas</li>
+              <li><span>—</span> Validação contra casos reais</li>
+              <li><span>—</span> Hand-off + treinamento</li>
+            </ul>
+            <div class="phase__foot"><span>Duração</span><b>5 semanas</b></div>
+          </div>
+        </div>
+
+        <hr class="divider" style="margin: 36px 0 4px;" />
+
+        <!-- @cronograma -->
+        <div class="eyebrow-doc" style="margin-top: 28px;"><span class="bar"></span>Cronograma · 8 semanas</div>
+        <div class="timeline">
+          <div class="timeline__line"></div>
+          <div class="timeline__weeks">
+            <div class="tw"><span class="pt pt--key"></span><div class="wk">S1</div><div class="nm nm--key">Diagnóstico</div></div>
+            <div class="tw"><span class="pt"></span><div class="wk">S2</div><div class="nm">Arquitetura</div></div>
+            <div class="tw"><span class="pt"></span><div class="wk">S3</div><div class="nm">Integração</div></div>
+            <div class="tw"><span class="pt"></span><div class="wk">S4</div><div class="nm">Eval real</div></div>
+            <div class="tw"><span class="pt pt--key"></span><div class="wk">S5</div><div class="nm nm--key">Piloto</div></div>
+            <div class="tw"><span class="pt"></span><div class="wk">S6</div><div class="nm">Soft launch</div></div>
+            <div class="tw"><span class="pt"></span><div class="wk">S7</div><div class="nm">Operação</div></div>
+            <div class="tw"><span class="pt pt--key"></span><div class="wk">S8</div><div class="nm nm--key">Hand-off</div></div>
+          </div>
+        </div>
+
+        <div class="milestones">
+          <div class="ms"><div class="t">Marco · S1</div><div class="d">Documento de diagnóstico + decisão de go/no-go.</div></div>
+          <div class="ms"><div class="t">Marco · S5</div><div class="d">Agente validado em 200 casos do histórico real.</div></div>
+          <div class="ms"><div class="t">Marco · S8</div><div class="d">Agente em produção. Time autônomo. Consultor sai.</div></div>
+        </div>
+      </div>
+
+      <div class="run-foot">
+        <span>Proposta comercial · confidencial</span>
+        <span>03 / 04</span>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PÁGINA 4 · INVESTIMENTO & PRÓXIMO PASSO
+         ========================================================= -->
+    <section class="sheet sheet--dark sheet__glow" data-screen-label="P4 Investimento">
+      <header class="run-head">
+        <div class="wordmark">
+          <b>Alexandre Afonso</b>
+          <span>Consultor<span class="ia">IA</span></span>
+        </div>
+        <div class="run-head__meta">Escopo &amp; investimento</div>
+      </header>
+
+      <div class="body-flow">
+        <div class="eyebrow-doc"><span class="bar"></span>Parte 03 · Escopo &amp; investimento</div>
+        <!-- @secao-preco-titulo -->
+        <h2 class="h-sec" style="margin-top: 18px;">Um preço fechado por fase. Sem custo surpresa.</h2>
+
+        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; margin-top: 22px; align-items: start;">
+          <!-- @precos -->
+          <div>
+            <div class="price">
+              <div class="price__row">
+                <div><div class="lt">Fase 01 · Entender</div><div class="ls">2 semanas · documento do processo + materiais consolidados</div></div>
+                <div class="val">R$ 12.000</div>
+              </div>
+              <div class="price__row">
+                <div><div class="lt">Fase 02 · Planejar</div><div class="ls">1 semana · diagnóstico, plano de ação e arquitetura</div></div>
+                <div class="val">R$ 8.000</div>
+              </div>
+              <div class="price__row">
+                <div><div class="lt">Fase 03 · Implementar</div><div class="ls">5 semanas · solução integrada, validada e em operação</div></div>
+                <div class="val">R$ 48.000</div>
+              </div>
+              <div class="price__row price__row--total">
+                <div><div class="lt">Total · 8 semanas</div><div class="ls">Pagamento em 3 parcelas, ao fim de cada fase</div></div>
+                <div class="num">R$ 68.000</div>
+              </div>
+            </div>
+            <div class="note">
+              <div class="t">— Decisão por fase</div>
+              <div class="d">Você pode encerrar o trabalho ao fim de qualquer fase. Os entregáveis até ali ficam com você.</div>
+            </div>
+          </div>
+
+          <!-- @roi -->
+          <div class="roi">
+            <div class="roi__h">— ROI projetado</div>
+            <div class="roi__line"><span>Custo atual de atendimento</span><span>R$ 720k/ano</span></div>
+            <div class="roi__line roi__line--accent"><span>Economia projetada</span><span>R$ 240k</span></div>
+            <div class="roi__line"><span>Investimento do projeto</span><span>R$ 68k</span></div>
+            <div class="roi__line"><span>Payback estimado</span><span>~3,5 meses</span></div>
+            <div class="roi__big">
+              <div class="num">3,5<small> × retorno · ano 1</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div>
+        <!-- @proximo-passo -->
+        <div class="eyebrow-doc"><span class="bar"></span>Próximo passo</div>
+        <h2 class="h-sec" style="margin-top: 14px; max-width: 560px;">
+          O próximo passo é uma <em style="font-style: normal; color: var(--color-accent);">conversa</em>.
+        </h2>
+        <p class="body-doc" style="margin-top: 14px; max-width: 560px; font-size: 15px;">
+          Posso entrar no time da Acme Tech na semana de <strong>09 de junho</strong>.
+          Você confirma a primeira reunião e eu envio a agenda — vídeo ou presencial.
+        </p>
+
+        <div class="contact">
+          <div>
+            <div class="kicker-doc">E-mail</div>
+            <div class="v">contato@alexandre.ai</div>
+          </div>
+          <div>
+            <div class="kicker-doc">WhatsApp</div>
+            <div class="v">+55 11 9 9999-0000</div>
+          </div>
+          <div>
+            <div class="kicker-doc">Agenda direta</div>
+            <div class="v accent">alexandre.ai/calendar →</div>
+          </div>
+        </div>
+
+        <!-- @assinaturas -->
+        <div class="sign">
+          <div class="sign__box">
+            <div class="ln"></div>
+            <div class="who"><b>Alexandre Afonso</b> · ConsultorIA</div>
+          </div>
+          <div class="sign__box">
+            <div class="ln"></div>
+            <div class="who"><b>Acme Tech</b> · responsável · data</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="run-foot">
+        <span>Proposta comercial · confidencial</span>
+        <span>04 / 04</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
