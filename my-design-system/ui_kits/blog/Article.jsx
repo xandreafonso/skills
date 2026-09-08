@@ -34,7 +34,7 @@ const articleStyles = {
   },
   avatar: {
     width: 36, height: 36, borderRadius: "var(--radius-sm)",
-    background: "var(--color-accent)", color: "var(--color-fg-on-amber)",
+    background: "var(--color-accent)", color: "var(--color-fg-on-sky)",
     display: "flex", alignItems: "center", justifyContent: "center",
     fontWeight: 700, fontSize: 13, letterSpacing: "-0.04em",
   },

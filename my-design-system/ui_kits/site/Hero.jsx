@@ -26,7 +26,7 @@ const heroStyles = {
   },
   eyebrowDot: {
     width: 6, height: 6, borderRadius: "50%", background: "var(--color-accent)",
-    boxShadow: "0 0 12px rgba(245,158,11,0.6)",
+    boxShadow: "0 0 12px rgba(14, 165, 233,0.6)",
   },
   h1: {
     fontSize: "clamp(48px, 7.2vw, 96px)",

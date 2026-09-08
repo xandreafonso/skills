@@ -9,7 +9,7 @@ const manifestoStyles = {
   },
   glow: {
     position: "absolute", top: "-20%", right: "-10%", width: "60%", height: "120%",
-    background: "radial-gradient(circle, rgba(245,158,11,0.10) 0%, transparent 55%)",
+    background: "radial-gradient(circle, rgba(14, 165, 233,0.10) 0%, transparent 55%)",
     pointerEvents: "none",
   },
   inner: {

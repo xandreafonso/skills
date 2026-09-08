@@ -1,7 +1,7 @@
 /* =============================================================
    Alexandre Afonso — ConsultorIA
    Design tokens: colors, typography, spacing, radii, elevation
-   Dark-first. Navy + amber. Sóbrio, corporativo, premium.
+   Dark-first. Navy + sky. Sóbrio, corporativo, premium.
    ============================================================= */
 
 /* ---- Fonts (Google Fonts) ----
@@ -26,13 +26,13 @@
   --navy-900: #060b16;
   --navy-950: #03070f;
 
-  /* Amber — accent. CTAs, highlights, data emphasis.
+  /* Sky — accent. CTAs, highlights, data emphasis.
      Used sparingly. Never on body text.                   */
-  --amber-300: #fcd34d;
-  --amber-400: #fbbf24;
-  --amber-500: #f59e0b;   /* anchor */
-  --amber-600: #d97706;
-  --amber-700: #b45309;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;   /* anchor */
+  --sky-600: #0284c7;
+  --sky-700: #0369a1;
 
   /* Neutrals (cool-leaning to harmonize with navy) */
   --neutral-0:    #ffffff;
@@ -59,27 +59,27 @@
 
   --color-border:         rgba(255, 255, 255, 0.07);
   --color-border-strong:  rgba(255, 255, 255, 0.14);
-  --color-border-focus:   var(--amber-500);
+  --color-border-focus:   var(--sky-500);
 
   --color-fg:           #eef2f9;     /* primary text */
   --color-fg-muted:     #a9b4c8;     /* secondary text */
   --color-fg-subtle:    #6b7894;     /* tertiary, captions */
   --color-fg-disabled:  #404a5c;
-  --color-fg-on-amber:  #1a1102;     /* text on amber pills/buttons */
+  --color-fg-on-sky:  #03111f;     /* text on sky pills/buttons */
 
-  --color-accent:        var(--amber-500);
-  --color-accent-hover:  var(--amber-400);
-  --color-accent-press:  var(--amber-600);
-  --color-accent-soft:   rgba(245, 158, 11, 0.12);
+  --color-accent:        var(--sky-500);
+  --color-accent-hover:  var(--sky-400);
+  --color-accent-press:  var(--sky-600);
+  --color-accent-soft:   rgba(14, 165, 233, 0.12);
 
-  --color-link:          var(--amber-400);
-  --color-link-hover:    var(--amber-300);
+  --color-link:          var(--sky-400);
+  --color-link-hover:    var(--sky-300);
 
   /* Status — desaturated to fit corporate tone */
   --color-success: #2da472;
   --color-warning: #d4a015;
   --color-danger:  #c4474a;
-  --color-info:    #4d7cc2;
+  --color-info:    #7b6fc9;
 
   /* ====== TYPOGRAPHY =================================== */
   --font-sans: "Geist", ui-sans-serif, -apple-system, BlinkMacSystemFont,
@@ -163,8 +163,8 @@
                0 20px 50px rgba(0,0,0,0.55);
   --shadow-xl: 0 1px 0 rgba(255,255,255,0.06) inset,
                0 32px 80px rgba(0,0,0,0.6);
-  --shadow-amber: 0 0 0 1px rgba(245,158,11,0.35),
-                  0 12px 32px rgba(245,158,11,0.18);
+  --shadow-sky: 0 0 0 1px rgba(14, 165, 233,0.35),
+                  0 12px 32px rgba(14, 165, 233,0.18);
 
   /* ====== MOTION ======================================= */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -207,7 +207,7 @@ body {
   color: var(--color-fg);
 }
 
-::selection { background: var(--amber-500); color: var(--color-fg-on-amber); }
+::selection { background: var(--sky-500); color: var(--color-fg-on-sky); }
 
 /* Semantic typography classes. Use these instead of raw tags
    when you need consistent treatment across the system.       */

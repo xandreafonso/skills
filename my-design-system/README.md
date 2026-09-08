@@ -128,9 +128,9 @@ Cópias dos dois últimos vivem em `/uploads/` no projeto.
 
 ### Cor
 - **Navy `#1a2a4a` é o âncora.** Canvas é `#060b16` (`--navy-900`). Cards usam `#0e172a`–`#13203a`.
-- **Âmbar `#f59e0b` é o único acento.** Reservado para CTA primário, métricas, links e indicadores ativos. Se aparecer em mais de 5% da tela, está sendo abusado.
+- **Sky `#0ea5e9` é o único acento.** Azul estilo Tailwind Sky. Reservado para CTA primário, métricas, links e indicadores ativos. Se aparecer em mais de 5% da tela, está sendo abusado.
 - **Sem cor decorativa.** Tons de status (success/warning/danger) são dessaturados de propósito.
-- **Sem gradientes coloridos.** Aceitos só: radial sutil sobre navy para vinheta; glow âmbar pontual (uma vez por tela).
+- **Sem gradientes coloridos.** Aceitos só: radial sutil sobre navy para vinheta; glow sky pontual (uma vez por tela).
 
 ### Tipografia
 - **Família única: [Geist](https://fonts.google.com/specimen/Geist) + Geist Mono.** Geométrica, neutra, premium. Substituível por Söhne / Inter Display em produção se o cliente quiser.
@@ -146,7 +146,7 @@ Base **4px**, escala em `--space-1` (4) até `--space-32` (128). Padding interno
 - **Sólidos navy** são o default. Sem imagem de fundo decorativa.
 - **Grid blueprint** (linhas de 1px a 3% de opacidade, célula 64-80px) com mask radial: usado no hero e em divisores.
 - **Dots sutis** (1px, opacidade 6-8%, célula 20-24px): alternativa ao grid.
-- **Glow âmbar pontual** (radial gradient, opacidade 10-12%): apenas em seções de manifesto/fechamento.
+- **Glow sky pontual** (radial gradient, opacidade 10-12%): apenas em seções de manifesto/fechamento.
 - **Sem imagens stock.** Quando precisar de foto, deixar placeholder com legenda `placeholder · substituir`.
 
 ### Animação
@@ -156,9 +156,9 @@ Base **4px**, escala em `--space-1` (4) até `--space-32` (128). Padding interno
 - Reduce-motion é respeitado: nenhuma animação é essencial.
 
 ### Hover & press
-- **Botão primário** (âmbar): hover clareia (`amber-400`), active escurece (`amber-600`).
+- **Botão primário** (sky): hover clareia (`sky-400`), active escurece (`sky-600`).
 - **Botão secundário**: hover muda `background` para `--color-surface-hover` (#142039).
-- **Links**: hover sobe para `amber-300` mais claro.
+- **Links**: hover sobe para `sky-300` mais claro.
 - **Cards**: hover muda apenas borda de `--color-border` para `--color-border-strong` + leve mudança de superfície. Sem `transform: scale()`.
 - **Press**: pequeno `translateY(0.5px)` em botões. Apenas isso.
 
@@ -168,7 +168,7 @@ Base **4px**, escala em `--space-1` (4) até `--space-32` (128). Padding interno
 - **Hairlines** (1px sobre superfície escura) são uma assinatura. Usadas para separar KPIs, seções de pricing, células de timeline.
 
 ### Sombras
-Sombras são **profundas e suaves** sobre dark, nunca _glow_. Sempre acompanhadas de uma highlight interna sutil (`inset 0 1px 0 rgba(255,255,255,0.05)`). Variante especial: `--shadow-amber` para focus ring e card destacado.
+Sombras são **profundas e suaves** sobre dark, nunca _glow_. Sempre acompanhadas de uma highlight interna sutil (`inset 0 1px 0 rgba(255,255,255,0.05)`). Variante especial: `--shadow-sky` para focus ring e card destacado.
 
 ### Raios
 - Default `--radius-md` (6px) para cards e botões.
@@ -211,7 +211,7 @@ Sombras são **profundas e suaves** sobre dark, nunca _glow_. Sempre acompanhada
 
 ### Assets locais
 - `assets/logo.svg` — wordmark monocromático (use currentColor)
-- `assets/logo-stacked-amber.svg` — wordmark com `IA` em âmbar
+- `assets/logo-stacked-sky.svg` — wordmark com `IA` em sky
 - `assets/logo-mark.svg` — mark `aa` para favicon e contextos pequenos
 
 ---

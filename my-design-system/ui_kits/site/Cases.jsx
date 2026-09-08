@@ -137,7 +137,7 @@ function Cases() {
                         <span style={casesStyles.sector}>{c.sector}</span>
                         <span>·</span>
                         <span>{c.year}</span>
-                        <span className="badge badge--amber" style={{marginLeft: "auto"}}>Em destaque</span>
+                        <span className="badge badge--sky" style={{marginLeft: "auto"}}>Em destaque</span>
                       </div>
                       <h3 style={{ ...casesStyles.title, ...casesStyles.titleLg }}>{c.title}</h3>
                       <p style={{ ...casesStyles.desc, ...casesStyles.descLg }}>{c.desc}</p>
